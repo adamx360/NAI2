@@ -89,6 +89,7 @@ public class Main {
         public int a;
         public double activation;
         public double[] weights;
+
         public Perceptron(String name, int a, double alpha, double beta) {
             this.name = name;
             this.alpha = alpha;
@@ -101,8 +102,9 @@ public class Main {
                 weights[i] = rand.nextDouble() + 0.01;
             }
         }
+
         public void train(Flower flower) {
-            if(guess(flower.attrs)!=name.equals(flower.name)) {
+            if (guess(flower.attrs) != name.equals(flower.name)) {
                 int d = name.equals(flower.name) ? 1 : 0;
                 int y = guess(flower.attrs) ? 1 : 0;
                 double delta = (d - y);
@@ -112,6 +114,7 @@ public class Main {
                 activation -= delta * beta;
             }
         }
+
         public boolean guess(ArrayList<Double> attrs) {
             double sum = 0;
             for (int i = 0; i < a; i++) {
@@ -124,7 +127,8 @@ public class Main {
     public static class Flower {
         public ArrayList<Double> attrs;
         public String name;
-        public Flower(String[] s){
+
+        public Flower(String[] s) {
             attrs = new ArrayList<>();
             for (int i = 0; i < s.length - 1; i++) {
                 attrs.add(Double.parseDouble(s[i].replace(',', '.').strip()));
