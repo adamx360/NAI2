@@ -28,12 +28,11 @@ public class Main {
                 w += (perceptron.guess(i.attrs) == name.equals(i.name)) ? 1 : 0;
             }
             wr = (double) w / training.size();
-            System.out.print("weights: ");
-            for (double d :
-                    perceptron.weights) {
+            System.out.print("Wagi: ");
+            for (double d : perceptron.weights) {
                 System.out.print(d + "\t");
             }
-            System.out.println("\nbias: " + perceptron.activation);
+            System.out.println("\nProg aktywacji: " + perceptron.activation);
             System.out.println();
             System.out.println(w + "/" + training.size());
             System.out.println(wr * 100 + "%");
@@ -49,16 +48,16 @@ public class Main {
         System.out.println(wr * 100 + "%");
         boolean b = true;
         while (b) {
-            System.out.println("czy chcesz podac atrybuty?\n1 - tak\n2 - nie");
+            System.out.println("Sprawdzic argumenty?\n1 - tak\n2 - nie");
             int tmp = scanner.nextInt();
             switch (tmp) {
                 case 1 -> {
                     ArrayList<Double> attrs = new ArrayList<>();
                     for (int i = 0; i < a; i++) {
-                        System.out.print("atrybut " + (i + 1) + ": ");
+                        System.out.print("Atrybut nr." + (i + 1) + ": ");
                         attrs.add(scanner.nextDouble());
                     }
-                    System.out.println((perceptron.guess(attrs) ? "zidentyfikowano " : "nie zidentyfikowano ") + name);
+                    System.out.println((perceptron.guess(attrs) ? name : "Inny gatunek "));
                 }
                 case 2 -> b = false;
                 default -> {
